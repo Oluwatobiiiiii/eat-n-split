@@ -108,20 +108,20 @@ function Friend({ friend, onSelection, selectedFriend }) {
 
   return (
     <li className={isSelected ? "selected" : ""}>
-      <img src={friend.image} alt={friend.name} />
-      <h3>{friend.name}</h3>
+      <img src={friend?.image} alt={friend?.name} />
+      <h3>{friend?.name}</h3>
 
-      {friend.balance < 0 && (
+      {friend?.balance < 0 && (
         <p className="red">
-          You owe {friend.name} {Math.abs(friend.balance)}€
+          You owe {friend?.name} {Math.abs(friend?.balance)}€
         </p>
       )}
-      {friend.balance > 0 && (
+      {friend?.balance > 0 && (
         <p className="green">
-          {friend.name} owes you {Math.abs(friend.balance)}€
+          {friend?.name} owes you {Math.abs(friend?.balance)}€
         </p>
       )}
-      {friend.balance === 0 && <p>You and {friend.name} are even</p>}
+      {friend?.balance === 0 && <p>You and {friend?.name} are even</p>}
 
       <Button onClick={() => onSelection(friend)}>
         {isSelected ? "Close" : "Select"}
@@ -189,7 +189,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
 
   return (
     <form className="form-split-bill" onSubmit={handleSubmit}>
-      <h2>Split a bill with {selectedFriend.name}</h2>
+      <h2>Split a bill with {selectedFriend?.name}</h2>
 
       <label>💰 Bill value</label>
       <input
@@ -209,7 +209,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         }
       />
 
-      <label>👫 {selectedFriend.name}'s expense</label>
+      <label>👫 {selectedFriend?.name}'s expense</label>
       <input type="text" disabled value={paidByFriend} />
 
       <label>🤑 Who is paying the bill</label>
@@ -218,7 +218,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         onChange={(e) => setWhoIsPaying(e.target.value)}
       >
         <option value="user">You</option>
-        <option value="friend">{selectedFriend.name}</option>
+        <option value="friend">{selectedFriend?.name}</option>
       </select>
 
       <Button>Split bill</Button>
